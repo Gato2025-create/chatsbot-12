@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Farmacia Mi Perú - En Mantenimiento</title>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      color: #333;
+      text-align: center;
+      padding: 100px 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    img {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      color: #c0392b;
+    }
+    #countdown {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="logo.jpg" alt="Logo de la farmacia">
+    <h1>¡Estamos en mantenimiento!</h1>
+    <p>Estamos trabajando para brindarte una mejor experiencia.<br>
+    Vuelve a visitarnos pronto.</p>
+
+    <div id="countdown">
+      Reanudamos en: <span id="timer">Cargando...</span>
+    </div>
+  </div>
+
+  <script>
+    // Configura aquí la fecha de reapertura (AAAA, MM - 1, DD, HH, MM, SS)
+    const targetDate = new Date(2025, 1, 5, 8, 0, 0); // 5 de mayo de 2025, 8:00 am
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("timer").innerHTML = "¡Ya estamos de regreso!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("timer").innerHTML =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
